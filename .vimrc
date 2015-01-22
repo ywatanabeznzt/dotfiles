@@ -1,0 +1,134 @@
+"===========================================================
+"NeoBundleの設定
+"===========================================================
+set nocompatible	"vi互換ではなくvimのデフォルト設定にする
+filetype off
+if has('vim_starting')
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+"プラグイン
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'koron/codic-vim'
+NeoBundle 'rhysd/unite-codic.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'gorodinskiy/vim-coloresque'
+NeoBundle 'mattn/emmet-vim'
+"カラースキーム
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'cocopon/iceberg.vim'
+
+call neobundle#end()
+
+filetype plugin indent on
+"===========================================================
+"プラグイン設定
+"===========================================================
+let g:lightline={
+	\ 'colorscheme': 'wombat',
+	\ 'active': {
+	\	'left': [ ['mode','paste'],['readonly','filename','modified'] ]
+	\ },
+	\ 'component_function' : {
+	\	'mode': 'MyMode'
+	\ },
+	\ 'separator': {'left': "",'right': ""},
+	\ 'subseparator': {'left': "",'right': ""}
+	\ }
+function! MyMode()
+	return &ft == 'unite' ? 'Unite' :
+		 \ &ft == 'vimfiler' ? 'VimFiler' :
+		 \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+let g:user_emmet_settings={
+	\ 'lang': 'ja'
+	\ }
+let g:syntascitc_enable_sign=1
+let g:syntasctic_auto_loc_list=2
+
+let g:vimfiler_force_overwrite_statusline=0
+nnoremap <C-f> :VimFiler<CR>
+"===========================================================
+"Unite設定
+"===========================================================
+"INSERTモードで開始
+"let g:unite_enable_start_insert=1
+"ステータスラインを上書きしない
+let g:unite_force_overwrite_statusline=0
+"ヒストリー/ヤンク機能を有効化
+let g:unite_source_history_yank_enable=1
+"PrefixKeyの設定
+nnoremap [Unite] <Nop>
+nmap <Space> [Unite]
+"バッファ一覧
+nnoremap [Unite]b :Unite buffer<CR>
+"ファイル一覧
+nnoremap [Unite]f :Unite file<CR>
+"最近のファイル一覧
+nnoremap [Unite]r :Unite file_mru<CR>
+"レジストリ一覧
+nnoremap [Unite]R :Unite register<CR>
+"最近のディレクトリ一覧
+nnoremap [Unite]d :Unite directory_mru<CR>
+"===========================================================
+"基本設定
+"===========================================================
+set number			"行番号を表示する
+set tabstop=4		"タブ位置を４にする
+set autoindent		"オートインデントを使用する
+set smartindent		"スマートインデントを使用する
+set shiftwidth=4	"オートインデントでずれる幅
+set showcmd			"コマンドを画面最下部に表示する
+set incsearch		"インクリメンタルサーチ
+set hlsearch		"検索時に検索結果をハイライト
+set cursorline		"カーソル行をハイライト
+set nowrap			"文を折り返して表示しない
+set helpheight=999	"ヘルプ画面いっぱいに開く
+set helplang=ja		"ヘルプを日本語に
+set splitright		"垂直分割の時は右に作成
+set splitbelow		"水平分割の時は下に作成
+set laststatus=2	"ステータスラインを２行に
+set showtabline=1	"複数の時にタブを表示
+syntax on			"構文のハイライト
+colorscheme hybrid	"カラースキーム設定
+"%マッチの強化
+runtime macros/matchit.vim
+"コメントを次の行に引き継がない
+autocmd FileType * setlocal formatoptions-=ro
+"Vimのディレクトリパスを開いているファイルのパスにする
+autocmd BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
+"文字コードの自動認識の追加
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
+"===========================================================
+"マッピング
+"===========================================================
+"入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <ESC>
+"入力モード中に<CTRL>とhjklの組み合わせで移動
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+"検索のハイライトを消す
+nnoremap <Esc><Esc> :nohlsearch<CR>
+"カラースキームの変更
+nnoremap <silent> <F5> :colorscheme molokai<CR>
+nnoremap <silent> <F6> :set background=dark<CR>:colorscheme solarized<CR>
+nnoremap <silent> <F7> :set background=light<CR>:colorscheme solarized<CR>
+nnoremap <silent> <F8> :colorscheme zenburn<CR>
+nnoremap <silent> <F9> :colorscheme jellybeans<CR>
+nnoremap <silent> <F10> :colorscheme hybrid<CR>
+colorscheme hybrid
