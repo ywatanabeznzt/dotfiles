@@ -80,9 +80,11 @@ nnoremap [Unite]d :Unite directory_mru<CR>
 "===========================================================
 set number			"行番号を表示する
 set tabstop=4		"タブ位置を４にする
+set shiftwidth=4	"オートインデントでずれる幅
+set softtabstop=4   "バックスペースで削除するスペース幅
 set autoindent		"オートインデントを使用する
 set smartindent		"スマートインデントを使用する
-set shiftwidth=4	"オートインデントでずれる幅
+set expandtab		"ソフトタブを有効にする
 set showcmd			"コマンドを画面最下部に表示する
 set incsearch		"インクリメンタルサーチ
 set hlsearch		"検索時に検索結果をハイライト
