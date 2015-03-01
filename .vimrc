@@ -14,22 +14,15 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'koron/codic-vim'
-NeoBundle 'rhysd/unite-codic.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'mattn/emmet-vim'
 "カラースキーム
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'cocopon/iceberg.vim'
 
 call neobundle#end()
 
@@ -129,9 +122,6 @@ inoremap <C-l> <right>
 nnoremap <Esc><Esc> :nohlsearch<CR>
 "カラースキームの変更
 nnoremap <silent> <F5> :colorscheme molokai<CR>
-nnoremap <silent> <F6> :set background=dark<CR>:colorscheme solarized<CR>
-nnoremap <silent> <F7> :set background=light<CR>:colorscheme solarized<CR>
-nnoremap <silent> <F8> :colorscheme zenburn<CR>
-nnoremap <silent> <F9> :colorscheme jellybeans<CR>
-nnoremap <silent> <F10> :colorscheme hybrid<CR>
+nnoremap <silent> <F6> :colorscheme jellybeans<CR>
+nnoremap <silent> <F7> :colorscheme hybrid<CR>
 colorscheme hybrid
