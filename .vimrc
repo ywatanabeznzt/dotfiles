@@ -20,6 +20,7 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'Yggdroot/indentLine'
 "カラースキーム
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
@@ -54,6 +55,10 @@ let g:syntascitc_enable_sign=1
 let g:syntasctic_auto_loc_list=2
 
 let g:vimfiler_force_overwrite_statusline=0
+
+let g:indentLine_color_term=111
+let g:indentLine_color_gui='#708090'
+let g:indentLine_char='¦'
 "===========================================================
 "Unite設定
 "===========================================================
