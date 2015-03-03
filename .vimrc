@@ -14,13 +14,17 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'osyo-manga/shabadou.vim'
+NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle 'cohama/vim-hier'
 "カラースキーム
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
@@ -59,6 +63,18 @@ let g:vimfiler_force_overwrite_statusline=0
 let g:indentLine_color_term=111
 let g:indentLine_color_gui='#708090'
 let g:indentLine_char='¦'
+
+let g:quickrun_config = {
+    \ 'watchdogs_checker/_': {
+    \   'hook/close_quickfix/enable_exit': 1,
+    \ },
+    \ '_': {
+    \   'runner': 'vimproc',
+    \   'runner/vimproc/updatetime': 60,
+    \ },
+    \}
+let g:watchdogs_check_BufWritePost_enable = 1
+call watchdogs#setup(g:quickrun_config)
 "===========================================================
 "Unite設定
 "===========================================================
