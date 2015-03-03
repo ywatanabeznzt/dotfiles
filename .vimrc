@@ -122,7 +122,7 @@ set ic				"検索時に大文字小文字を無視
 set list
 set listchars=tab:▸\ 
 syntax on			"構文のハイライト
-colorscheme hybrid	"カラースキーム設定
+colorscheme molokai	"カラースキーム設定
 "%マッチの強化
 runtime macros/matchit.vim
 "コメントを次の行に引き継がない
@@ -150,4 +150,3 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 nnoremap <silent> <F5> :colorscheme molokai<CR>
 nnoremap <silent> <F6> :colorscheme jellybeans<CR>
 nnoremap <silent> <F7> :colorscheme hybrid<CR>
-colorscheme hybrid

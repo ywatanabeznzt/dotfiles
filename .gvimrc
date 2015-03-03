@@ -11,6 +11,6 @@ set guioptions -=e	"GUIタブページを使用しない
 set cmdheight=1
 set transparency=5
 set nobackup
-colorscheme hybrid	"カラースキーム設定
+colorscheme molokai	"カラースキーム設定
 execute "highlight qf_error_ucurl gui=undercurl guisp=Red"
 let g:hier_highlight_group_qf="qf_error_ucurl"
