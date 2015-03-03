@@ -29,6 +29,7 @@ NeoBundle 'cohama/vim-hier'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 
 call neobundle#end()
 
