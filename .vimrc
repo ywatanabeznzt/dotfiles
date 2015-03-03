@@ -118,7 +118,8 @@ set splitright		"垂直分割の時は右に作成
 set splitbelow		"水平分割の時は下に作成
 set laststatus=2	"ステータスラインを２行に
 set showtabline=1	"複数の時にタブを表示
-set ic				"検索時に大文字小文字を無視
+set ignorecase      "検索時に大文字小文字を無視
+set smartcase       "検索時に大文字を入れた場合は大文字小文字を無視しない
 set list
 set listchars=tab:▸\ 
 syntax on			"構文のハイライト
