@@ -153,3 +153,5 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 nnoremap <silent> <F5> :colorscheme molokai<CR>
 nnoremap <silent> <F6> :colorscheme jellybeans<CR>
 nnoremap <silent> <F7> :colorscheme hybrid<CR>
+"QuickRunの起動
+nnoremap <silent> <C-@> :QuickRun<CR>
