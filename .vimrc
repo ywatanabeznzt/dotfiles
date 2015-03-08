@@ -1,10 +1,10 @@
 "===========================================================
 "NeoBundleの設定
 "===========================================================
-set nocompatible	"vi互換ではなくvimのデフォルト設定にする
+set nocompatible    "vi互換ではなくvimのデフォルト設定にする
 filetype off
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -25,6 +25,7 @@ NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'cohama/vim-hier'
+NeoBundle 'vim-scripts/Align'
 "カラースキーム
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
@@ -38,24 +39,24 @@ filetype plugin indent on
 "プラグイン設定
 "===========================================================
 let g:lightline={
-	\ 'colorscheme': 'wombat',
-	\ 'active': {
-	\	'left': [ ['mode','paste'],['readonly','filename','modified'] ]
-	\ },
-	\ 'component_function' : {
-	\	'mode': 'MyMode'
-	\ },
-	\ 'separator': {'left': "",'right': ""},
-	\ 'subseparator': {'left': "",'right': ""}
-	\ }
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \    'left': [ ['mode','paste'],['readonly','filename','modified'] ]
+    \ },
+    \ 'component_function' : {
+    \    'mode': 'MyMode'
+    \ },
+    \ 'separator': {'left': "",'right': ""},
+    \ 'subseparator': {'left': "",'right': ""}
+    \ }
 function! MyMode()
-	return &ft == 'unite' ? 'Unite' :
-		 \ &ft == 'vimfiler' ? 'VimFiler' :
-		 \ winwidth(0) > 60 ? lightline#mode() : ''
+    return &ft == 'unite' ? 'Unite' :
+         \ &ft == 'vimfiler' ? 'VimFiler' :
+         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 let g:user_emmet_settings={
-	\ 'lang': 'ja'
-	\ }
+    \ 'lang': 'ja'
+    \ }
 let g:syntascitc_enable_sign=1
 let g:syntasctic_auto_loc_list=2
 
@@ -102,30 +103,30 @@ nnoremap [Unite]d :Unite directory_mru<CR>
 "===========================================================
 "基本設定
 "===========================================================
-set number			"行番号を表示する
-set tabstop=4		"タブ位置を４にする
-set shiftwidth=4	"オートインデントでずれる幅
+set number          "行番号を表示する
+set tabstop=4       "タブ位置を４にする
+set shiftwidth=4    "オートインデントでずれる幅
 set softtabstop=4   "バックスペースで削除するスペース幅
-set autoindent		"オートインデントを使用する
-set smartindent		"スマートインデントを使用する
-set expandtab		"ソフトタブを有効にする
-set showcmd			"コマンドを画面最下部に表示する
-set incsearch		"インクリメンタルサーチ
-set hlsearch		"検索時に検索結果をハイライト
-set cursorline		"カーソル行をハイライト
-set nowrap			"文を折り返して表示しない
-set helpheight=999	"ヘルプ画面いっぱいに開く
-set helplang=ja		"ヘルプを日本語に
-set splitright		"垂直分割の時は右に作成
-set splitbelow		"水平分割の時は下に作成
-set laststatus=2	"ステータスラインを２行に
-set showtabline=1	"複数の時にタブを表示
+set autoindent      "オートインデントを使用する
+set smartindent     "スマートインデントを使用する
+set expandtab       "ソフトタブを有効にする
+set showcmd         "コマンドを画面最下部に表示する
+set incsearch       "インクリメンタルサーチ
+set hlsearch        "検索時に検索結果をハイライト
+set cursorline      "カーソル行をハイライト
+set nowrap          "文を折り返して表示しない
+set helpheight=999  "ヘルプ画面いっぱいに開く
+set helplang=ja     "ヘルプを日本語に
+set splitright      "垂直分割の時は右に作成
+set splitbelow      "水平分割の時は下に作成
+set laststatus=2    "ステータスラインを２行に
+set showtabline=1   "複数の時にタブを表示
 set ignorecase      "検索時に大文字小文字を無視
 set smartcase       "検索時に大文字を入れた場合は大文字小文字を無視しない
 set list
-set listchars=tab:▸\ 
-syntax on			"構文のハイライト
-colorscheme molokai	"カラースキーム設定
+set listchars=tab:▸\
+syntax on           "構文のハイライト
+colorscheme molokai "カラースキーム設定
 "%マッチの強化
 runtime macros/matchit.vim
 "コメントを次の行に引き継がない
