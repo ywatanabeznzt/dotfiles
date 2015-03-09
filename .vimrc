@@ -82,24 +82,28 @@ call watchdogs#setup(g:quickrun_config)
 "Unite設定
 "===========================================================
 "INSERTモードで開始
-"let g:unite_enable_start_insert=1
+let g:unite_enable_start_insert = 1
 "ステータスラインを上書きしない
-let g:unite_force_overwrite_statusline=0
+let g:unite_force_overwrite_statusline = 0
 "ヒストリー/ヤンク機能を有効化
-let g:unite_source_history_yank_enable=1
+let g:unite_source_history_yank_enable = 1
+"最近開いたファイル履歴の保存数
+let g:unite_source_file_mru_limit = 50
 "PrefixKeyの設定
 nnoremap [Unite] <Nop>
 nmap <Space> [Unite]
 "バッファ一覧
 nnoremap [Unite]b :Unite buffer<CR>
 "ファイル一覧
-nnoremap [Unite]f :Unite file<CR>
+nnoremap [Unite]f :UniteWithBufferDir -buffer-name=files file<CR>
 "最近のファイル一覧
 nnoremap [Unite]r :Unite file_mru<CR>
 "レジストリ一覧
 nnoremap [Unite]R :Unite register<CR>
 "最近のディレクトリ一覧
 nnoremap [Unite]d :Unite directory_mru<CR>
+"ヤンク履歴一覧
+nnoremap [Unite]y :Unite history/yank<CR>
 "===========================================================
 "基本設定
 "===========================================================
