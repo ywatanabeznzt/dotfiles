@@ -127,6 +127,7 @@ set laststatus=2    "ステータスラインを２行に
 set showtabline=1   "複数の時にタブを表示
 set ignorecase      "検索時に大文字小文字を無視
 set smartcase       "検索時に大文字を入れた場合は大文字小文字を無視しない
+set noundofile      "Undoファイルを作成しない
 set list
 set listchars=tab:▸\
 syntax on           "構文のハイライト
