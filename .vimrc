@@ -139,6 +139,7 @@ autocmd BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
 "文字コードの設定
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
 set fileencoding=utf-8
+set fileformat=unix
 "カーソル形状の設定
 let &t_SI="\e]50;CursorShape=1\x7"
 let &t_EI="\e]50;CursorShape=0\x7"
