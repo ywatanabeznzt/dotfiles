@@ -1,5 +1,5 @@
 "===========================================================
-"NeoBundleの設定
+" neobundle
 "===========================================================
 set nocompatible    "vi互換ではなくvimのデフォルト設定にする
 filetype off
@@ -8,11 +8,11 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-
 "プラグイン
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'othree/html5.vim'
@@ -26,6 +26,9 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'cohama/vim-hier'
 NeoBundle 'vim-scripts/Align'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
 "カラースキーム
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
@@ -36,7 +39,7 @@ call neobundle#end()
 
 filetype plugin indent on
 "===========================================================
-"プラグイン設定
+" Lightline
 "===========================================================
 let g:lightline={
     \ 'colorscheme': 'wombat',
@@ -54,21 +57,37 @@ function! MyMode()
          \ &ft == 'vimfiler' ? 'VimFiler' :
          \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
-let g:user_emmet_settings={
-    \ 'lang': 'ja'
-    \ }
-let g:syntascitc_enable_sign=1
-let g:syntasctic_auto_loc_list=2
-
+"===========================================================
+" emmet
+"===========================================================
+let g:user_emmet_settings = {
+    \ 'variables': {
+    \   'lang': 'ja',
+    \ },
+    \}
+"===========================================================
+" vimfiler
+"===========================================================
 let g:vimfiler_force_overwrite_statusline=0
-
+"===========================================================
+" indentLine
+"===========================================================
 let g:indentLine_color_term=111
 let g:indentLine_color_gui='#708090'
 let g:indentLine_char='¦'
-
+"===========================================================
+" quickrun
+"===========================================================
 let g:quickrun_config = {
+    \ 'vim/watchdogs_checker': {
+    \   'type': executable('vint') ? 'watchdogs_checker/vint' : '',
+    \ },
     \ 'watchdogs_checker/_': {
     \   'hook/close_quickfix/enable_exit': 1,
+    \ },
+    \ 'watchdogs_checker/vint': {
+    \   'command': 'vint',
+    \   'exec': '%c %o %s:p ',
     \ },
     \ '_': {
     \   'runner': 'vimproc',
@@ -76,10 +95,53 @@ let g:quickrun_config = {
     \   'outputter/buffer/into': 1,
     \ },
     \}
+"===========================================================
+" watchdogs
+"===========================================================
 let g:watchdogs_check_BufWritePost_enable = 1
 call watchdogs#setup(g:quickrun_config)
 "===========================================================
-"Unite設定
+" neocomcplete
+"===========================================================
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#use_vimproc = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#lock_buffer_name_pattern= '\*ku\*'
+let g:neocomplete#lock_iminsert = 1
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" neocomplete plugin mappings
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+" neocomplete recommended key-mappings
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return neocomplete#close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    " return pumvisible() ? neocomplete#close_popup : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup() . "\<C-h>"
+inoremap <expr><C-y> neocomplete#close_popup()
+inoremap <expr><C-e> neocomplete#cancel_popup()
+inoremap <expr><CR> pumvisible()? neocomplete#smart_close_popup():"\<CR>"
+inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "<CR>"
+"===========================================================
+" EasyMotion
+"===========================================================
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+let g:EasyMotion_leader_key="'"
+"===========================================================
+" unite
 "===========================================================
 "INSERTモードで開始
 let g:unite_enable_start_insert = 1
@@ -105,31 +167,33 @@ nnoremap [Unite]d :Unite directory_mru<CR>
 "ヤンク履歴一覧
 nnoremap [Unite]y :Unite history/yank<CR>
 "===========================================================
-"基本設定
+" 基本設定
 "===========================================================
-set number          "行番号を表示する
-set tabstop=4       "タブ位置を４にする
-set shiftwidth=4    "オートインデントでずれる幅
-set softtabstop=4   "バックスペースで削除するスペース幅
-set autoindent      "オートインデントを使用する
-set smartindent     "スマートインデントを使用する
-set expandtab       "ソフトタブを有効にする
-set showcmd         "コマンドを画面最下部に表示する
-set incsearch       "インクリメンタルサーチ
-set hlsearch        "検索時に検索結果をハイライト
-set cursorline      "カーソル行をハイライト
-set wrap            "文を折り返して表示する
-set helpheight=999  "ヘルプ画面いっぱいに開く
-set helplang=ja     "ヘルプを日本語に
-set splitright      "垂直分割の時は右に作成
-set splitbelow      "水平分割の時は下に作成
-set laststatus=2    "ステータスラインを２行に
-set showtabline=1   "複数の時にタブを表示
-set ignorecase      "検索時に大文字小文字を無視
-set smartcase       "検索時に大文字を入れた場合は大文字小文字を無視しない
-set noundofile      "Undoファイルを作成しない
-syntax on           "構文のハイライト
-colorscheme molokai "カラースキーム設定
+set number            "行番号を表示する
+set tabstop=4         "タブ位置を４にする
+set shiftwidth=4      "オートインデントでずれる幅
+set softtabstop=4     "バックスペースで削除するスペース幅
+set autoindent        "オートインデントを使用する
+set smartindent       "スマートインデントを使用する
+set expandtab         "ソフトタブを有効にする
+set showcmd           "コマンドを画面最下部に表示する
+set incsearch         "インクリメンタルサーチ
+set hlsearch          "検索時に検索結果をハイライト
+set cursorline        "カーソル行をハイライト
+set wrap              "文を折り返して表示する
+set helpheight=999    "ヘルプ画面いっぱいに開く
+set helplang=ja       "ヘルプを日本語に
+set splitright        "垂直分割の時は右に作成
+set splitbelow        "水平分割の時は下に作成
+set laststatus=2      "ステータスラインを２行に
+set showtabline=1     "複数の時にタブを表示
+set ignorecase        "検索時に大文字小文字を無視
+set smartcase         "検索時に大文字を入れた場合は大文字小文字を無視しない
+set noundofile        "Undoファイルを作成しない
+set clipboard=unnamed "ヤンクでクリップボードにコピー
+set nobackup          "バックアップファイを使用しない
+syntax on             "構文のハイライト
+colorscheme molokai   "カラースキーム設定
 "%マッチの強化
 runtime macros/matchit.vim
 "コメントを次の行に引き継がない
@@ -141,10 +205,13 @@ set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
 set fileencoding=utf-8
 set fileformat=unix
 "カーソル形状の設定
-let &t_SI="\e]50;CursorShape=1\x7"
-let &t_EI="\e]50;CursorShape=0\x7"
+if has('win64')
+    echo 'run win64mode'
+    let &t_SI="\e]50;CursorShape=1\x7"
+    let &t_EI="\e]50;CursorShape=0\x7"
+endif
 "===========================================================
-"マッピング
+" マッピング
 "===========================================================
 "入力モード中に素早くjjと入力した場合はESCとみなす
 inoremap jj <ESC>
@@ -160,4 +227,4 @@ nnoremap <silent> <F5> :colorscheme molokai<CR>
 nnoremap <silent> <F6> :colorscheme jellybeans<CR>
 nnoremap <silent> <F7> :colorscheme hybrid<CR>
 "QuickRunの起動
-nnoremap <silent> <C-@> :QuickRun<CR>
+nnoremap <C-CR> :QuickRun<CR>
