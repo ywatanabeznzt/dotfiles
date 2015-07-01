@@ -29,6 +29,7 @@ NeoBundle 'vim-scripts/Align'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'junegunn/vim-easy-align'
 "カラースキーム
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
@@ -57,6 +58,10 @@ function! MyMode()
          \ &ft == 'vimfiler' ? 'VimFiler' :
          \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+"===========================================================
+" easy-align
+"===========================================================
+vmap <CR> <Plug>(EasyAlign)
 "===========================================================
 " emmet
 "===========================================================
