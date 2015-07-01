@@ -46,6 +46,7 @@ filetype plugin indent on
 "===========================================================
 imap <C-s> <Plug>(neosnippet_expand_or_jump)
 smap <C-s> <Plug>(neosnippet_expand_or_jump)
+let g:neosnippet#snippets_directory='~/.vim/mysnippets/'
 "===========================================================
 " Lightline
 "===========================================================
