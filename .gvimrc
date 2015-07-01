@@ -12,7 +12,9 @@ set cmdheight=1
 if has('mac') || has('win64')
     set transparency=5
 endif
+if has('unix')
+    set guifont=Ricty\ Diminished\ 12
+endif
 colorscheme molokai	"カラースキーム設定
 execute "highlight qf_error_ucurl gui=undercurl guisp=Red"
 let g:hier_highlight_group_qf="qf_error_ucurl"
-
