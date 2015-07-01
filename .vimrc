@@ -13,6 +13,8 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'othree/html5.vim'
@@ -39,6 +41,11 @@ NeoBundle 'altercation/vim-colors-solarized'
 call neobundle#end()
 
 filetype plugin indent on
+"===========================================================
+" neosnippet
+"===========================================================
+imap <C-s> <Plug>(neosnippet_expand_or_jump)
+smap <C-s> <Plug>(neosnippet_expand_or_jump)
 "===========================================================
 " Lightline
 "===========================================================
