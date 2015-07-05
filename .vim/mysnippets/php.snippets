@@ -1,2 +1,7 @@
 snippet php
     <?php ${1:code} ?>
+
+snippet wp
+    <?php if(have_posts()): while(have_posts()): the_post(); ?>
+        ${1:code}
+    <?php endwhile; endif; ?>
