@@ -32,6 +32,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'elzr/vim-json'
 "カラースキーム
 NeoBundle 'tomasr/molokai'
 NeoBundle 'w0ng/vim-hybrid'
@@ -41,6 +42,10 @@ NeoBundle 'altercation/vim-colors-solarized'
 call neobundle#end()
 
 filetype plugin indent on
+"===========================================================
+" vim-json
+"===========================================================
+let g:vim_json_syntax_conceal = 0
 "===========================================================
 " neosnippet
 "===========================================================
