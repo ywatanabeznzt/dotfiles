@@ -5,5 +5,3 @@
 	editor = vim
 [color]
 	ui = true
-[merge]
-	ff = false
