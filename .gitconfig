@@ -5,3 +5,9 @@
 	editor = vim
 [color]
 	ui = true
+[alias]
+	st = status
+	graph = log --oneline --graph --decorate=full
+	co = checkout
+	br = branch -avv
+	com = commit
