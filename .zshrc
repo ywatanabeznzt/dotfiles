@@ -31,6 +31,7 @@ zle -N history-beginning-search-forward-end history-search-end
 #===========================================================
 alias ll="ls -l"
 alias la="ls -al"
+alias vim="nvim"
 
 #===========================================================
 # bindkey
@@ -52,7 +53,8 @@ export HISTSIZE=1000
 export SAVEHIST=1000000
 # 文字コードにUTF-8を指定
 export LANG=ja_JP.UTF-8
-
+# NeoVim用
+export XDG_CONFIG_HOME=~/.dotfiles
 #===========================================================
 # setopt
 #===========================================================
