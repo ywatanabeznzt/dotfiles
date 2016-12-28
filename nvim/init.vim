@@ -1,4 +1,26 @@
 "===========================================================
+" dein.vimの読み込み
+"===========================================================
+if &compatible
+    set nocompatible
+endif
+
+let s:dein_dir=expand('~/.dotfiles/nvim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+    call dein#load_toml('~/.dotfiles/nvim/dein.toml', {'lazy': 0})
+    call dein#end()
+    call dein#save_state()
+endif
+
+filetype plugin indent on
+syntax enable
+
+"===========================================================
 " 基本設定
 "===========================================================
 set number            "行番号を表示する
@@ -24,5 +46,5 @@ set smartcase         "検索時に大文字を入れた場合は大文字小文
 set noundofile        "Undoファイルを作成しない
 set clipboard=unnamed "ヤンクでクリップボードにコピー
 set nobackup          "バックアップファイを使用しない
-syntax on             "構文のハイライト
-
+set background=dark   "背景色を設定
+colorscheme solarized "カラースキームを設定
