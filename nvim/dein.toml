@@ -5,4 +5,7 @@ repo = 'Shougo/dein.vim'
 repo = 'tomasr/molokai'
 
 [[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
 repo = 'altercation/vim-colors-solarized'
