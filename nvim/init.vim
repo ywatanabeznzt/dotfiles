@@ -48,9 +48,15 @@ set clipboard=unnamed "ヤンクでクリップボードにコピー
 set nobackup          "バックアップファイを使用しない
 set background=dark   "背景色を設定
 colorscheme solarized "カラースキームを設定
+"コメントを次の行に引き継がない
+autocmd FileType * setlocal formatoptions-=ro
 "カーソル形状の設定
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"文字コードの設定
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
+set fileencoding=utf-8
+set fileformat=unix
 
 "===========================================================
 " lightline
