@@ -63,6 +63,8 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+# zsh-autosuggestionsの設定
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 #===========================================================
 # setopt
