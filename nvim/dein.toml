@@ -5,6 +5,11 @@ repo = 'Shougo/dein.vim'
 repo = 'tomasr/molokai'
 
 [[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
