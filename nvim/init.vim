@@ -58,15 +58,17 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let g:lightline={
     \ 'colorscheme': 'solarized',
     \ 'active': {
-    \       'left': [ ['mode', 'paste'],['readonly','filename','modified'] ],
+    \       'left': [ ['mode', 'paste'],['readonly','fugitive', 'gitgutter', 'filename', 'modified'] ],
     \       'right': [ ['percent', 'lineinfo'],['fileformat','fileencoding', 'filetype'],['charcode'] ]
     \ },
     \ 'component_function': {
     \       'mode': 'MyMode',
     \       'charcode': 'MyCharCode',
+    \       'fugitive': 'MyFugitive',
+    \       'gitgutter': 'MyGitgutter'
     \ },
     \ 'separator': {'left': "", 'right': ""},
-    \ 'subseparator': {'left': "", 'right': ""},
+    \ 'subseparator': {'left': "|", 'right': "|"},
     \ }
 
 function! MyMode()
@@ -109,3 +111,35 @@ function! MyCharCode()
 
     return "'". char ."' ". nr
 endfunction
+
+function! MyFugitive() 
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            let _ = fugitive#head()
+            return strlen(_) ? '<' . _ . '>' : ''
+        endif
+    catch
+    endtry
+    return ''
+endfunction
+
+function! MyGitgutter()
+    if !exists('*GitGutterGetHunkSummary') || !get(g:, 'gitgutter_enabled', 0) || winwidth('.') <= 90
+        return ''
+    endif
+
+    let symbols = [
+        \ g:gitgutter_sign_added,
+        \ g:gitgutter_sign_modified,
+        \ g:gitgutter_sign_removed,
+        \ ]
+    let hunks = GitGutterGetHunkSummary()
+    let ret = []
+    for i in [0, 1, 2]
+        if hunks[i] > 0
+            call add(ret, '(' . symbols[i] . hunks[i] . ')')
+        endif
+    endfor
+    return join(ret, ' ')
+endfunction
+
