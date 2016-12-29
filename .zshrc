@@ -55,6 +55,7 @@ export SAVEHIST=1000000
 export LANG=ja_JP.UTF-8
 # NeoVim用
 export XDG_CONFIG_HOME=~/.dotfiles
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 # pyenv用
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
