@@ -7,7 +7,7 @@ zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "dracula/zsh", as:theme
+# zplug "dracula/zsh", as:theme
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]:"
@@ -85,3 +85,20 @@ setopt hist_reduce_blanks
 setopt pushd_ignore_dups
 # Zsh間でコマンド履歴を共有
 setopt share_history
+
+
+PROMPT="%{${fg[blue]}%}%c%{${reset_color}%} "
+
+autoload -Uz vcs_info
+
+setopt prompt_subst
+local ret_status="%(?:%{$fg[cyan]%}➜ :%{$fg[red]%}➜ )"
+
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}✔ "
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}✗ "
+zstyle ':vcs_info:*' formats "%F{cyan}(%b)%c%u%f$(git_clean_or_dirty)"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+PROMPT=$PROMPT'${vcs_info_msg_0_}'$ret_status
+
