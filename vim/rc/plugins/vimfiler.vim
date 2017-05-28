@@ -1,4 +1,10 @@
 let g:vimfiler_as_default_explorer=1
 
-nnoremap <silent> <Space>f :VimFiler -split -simple -winwidth=50 -no-quit<CR>
-
+call unite#custom_default_action('source/bookmark/directory','vimfiler')
+call vimfiler#custom#profile('default', 'context', {
+    \ 'split': 1,
+    \ 'simple': 1,
+    \ 'winwidth': 50,
+    \ 'no-quit': 1,
+    \ })
+nnoremap <silent> <Space>f :VimFiler<CR>
