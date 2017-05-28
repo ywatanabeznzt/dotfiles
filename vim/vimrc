@@ -36,7 +36,7 @@ else
 endif
 
 if has('gui_running')
-    call s:sourcerc('gui.rc.vim')
+    call s:source_rc('gui.rc.vim')
 endif
 
 set runtimepath+=~/.vim/rc/
