@@ -24,4 +24,5 @@ set smartcase         "検索時に大文字を入れた場合は大文字小文
 set clipboard=unnamed "ヤンクでクリップボードにコピー
 set background=dark   "背景色を設定
 set cmdheight=1       "メッセージ表示欄を1行に
+set wildmenu
 colorscheme solarized
