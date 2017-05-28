@@ -6,4 +6,4 @@ nnoremap <silent> <C-u><C-f> :Unite file_rec<CR>
 nnoremap <silent> <C-u><C-b> :Unite buffer<CR>
 nnoremap <silent> <C-u><C-r> :Unite file_mru buffer<CR>
 nnoremap <silent> <C-u><C-g> :Unite vimgrep<CR>
-
+nnoremap <silent> <C-u><C-u> :UniteResume<CR>
