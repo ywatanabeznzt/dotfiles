@@ -10,3 +10,6 @@ inoremap <C-k> <up>
 inoremap <C-l> <right>
 "検索のハイライトを消す
 nnoremap <Esc><Esc> :nohlsearch<CR>
+"コマンド履歴検索
+cnoremap <C-p> <up>
+cnoremap <C-n> <down>
