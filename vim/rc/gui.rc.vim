@@ -9,4 +9,5 @@ set guioptions -=l	"左スクロールバー非表示
 set guioptions -=L	"左スクロールバー非表示（分割時）
 set guioptions -=e	"GUIタブページを使用しない
 
+set cmdheight=1 "メッセージ表示欄を1行に
 colorscheme solarized
