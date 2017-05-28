@@ -2,6 +2,15 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]

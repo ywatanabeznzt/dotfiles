@@ -38,3 +38,6 @@ endif
 if has('gui_running')
     call s:sourcerc('gui.rc.vim')
 endif
+
+set runtimepath+=~/.vim/rc/
+runtime! plugins/*.vim
