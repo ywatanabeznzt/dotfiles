@@ -1,11 +1,9 @@
 #!/bin/bash
 
-DOT_FILES=( .vim .vimrc .gvimrc .zshrc .zplug .gitconfig )
-
-for file in ${DOT_FILES[@]}
-do
-	ln -sf $HOME/.dotfiles/$file $HOME/$file
-done
+ln -sf $HOME/.dotfiles/vim $HOME/.vim
+ln -sf $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
+ln -sf $HOME/.dotfiles/zshrc $HOME/.zshrc
+ln -sf $HOME/.dotfiles/zplug $HOME/.zplug
 
 git submodule init
 git submodule update

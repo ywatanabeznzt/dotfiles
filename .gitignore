@@ -1,4 +1,4 @@
-.vim/bundle/*
-.vim/.netrwhist
+vim/bundle/*
+vim/.netrwhist
 
 nvim/dein/*
