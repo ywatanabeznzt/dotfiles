@@ -8,3 +8,5 @@ set guioptions -=R	"右スクロールバー非表示（分割時）
 set guioptions -=l	"左スクロールバー非表示
 set guioptions -=L	"左スクロールバー非表示（分割時）
 set guioptions -=e	"GUIタブページを使用しない
+
+colorscheme solarized

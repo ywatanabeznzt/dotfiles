@@ -22,3 +22,5 @@ set showtabline=1     "複数の時にタブを表示
 set ignorecase        "検索時に大文字小文字を無視
 set smartcase         "検索時に大文字を入れた場合は大文字小文字を無視しない
 set clipboard=unnamed "ヤンクでクリップボードにコピー
+set background=dark   "背景色を設定
+colorscheme solarized
