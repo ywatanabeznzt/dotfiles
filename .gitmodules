@@ -2,6 +2,6 @@
 	path = zplug
 	url = https://github.com/zplug/zplug
     ignore = dirty
-[submodule "vim/dein/repos/github.com/Shougo/dein.vim"]
-	path = vim/dein/repos/github.com/Shougo/dein.vim
-	url = https://github.com/Shougo/dein.vim
+[submodule "vim/dein/repose/github.com/Shougo/dein.vim"]
+	path = vim/dein/repose/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim.git
