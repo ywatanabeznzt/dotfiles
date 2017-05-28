@@ -31,7 +31,6 @@ zle -N history-beginning-search-forward-end history-search-end
 #===========================================================
 alias ll="ls -l"
 alias la="ls -al"
-alias vim="nvim"
 alias .dotfiles="cd ~/.dotfiles"
 alias .zshrc="vim ~/.zshrc"
 alias .vimrc="vim ~/.dotfiles/nvim/init.vim"
