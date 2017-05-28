@@ -1,3 +1,7 @@
 vim/bundle/*
 vim/.netrwhist
 vim/dein/*
+vim/tmp/backup/*
+vim/tmp/undo/*
+
+!.gitkeep
