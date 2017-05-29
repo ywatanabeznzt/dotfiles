@@ -28,4 +28,5 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
 
-
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
