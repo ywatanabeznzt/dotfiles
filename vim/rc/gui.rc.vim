@@ -11,3 +11,4 @@ set guioptions -=e	"GUIタブページを使用しない
 
 set cmdheight=1 "メッセージ表示欄を1行に
 colorscheme solarized
+set guifont=Myrica\ M:h12
