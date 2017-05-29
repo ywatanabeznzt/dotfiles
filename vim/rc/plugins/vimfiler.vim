@@ -5,6 +5,6 @@ call vimfiler#custom#profile('default', 'context', {
     \ 'split': 1,
     \ 'simple': 1,
     \ 'winwidth': 50,
-    \ 'no-quit': 1,
+    \ 'no_quit': 1,
     \ })
 nnoremap <silent> <Space>f :VimFiler<CR>
