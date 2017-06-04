@@ -1,5 +1,5 @@
-let g:unite_enable_start_insert=0
-let g:unite_source_file_mru_limit=200
+let g:unite_enable_start_insert = 0
+let g:unite_source_file_mru_limit = 200
 
 nnoremap <silent> <C-u><C-y> :Unite history/yank<CR>
 nnoremap <silent> <C-u><C-f> :Unite file_rec<CR>

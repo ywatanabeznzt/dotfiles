@@ -1,7 +1,7 @@
 "===========================================================
 " Lightline
 "===========================================================
-let g:lightline={
+let g:lightline = {
     \ 'colorscheme': 'solarized',
     \ 'active': {
     \       'left': [ ['mode', 'paste'],['readonly','fugitive', 'gitgutter', 'filename', 'modified'] ],

@@ -1,4 +1,4 @@
-let g:vimfiler_as_default_explorer=1
+let g:vimfiler_as_default_explorer = 1
 
 call unite#custom_default_action('source/bookmark/directory','vimfiler')
 call vimfiler#custom#profile('default', 'context', {
