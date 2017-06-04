@@ -1,4 +1,8 @@
 [[plugins]]
+repo = 'Shougo/vimproc'
+build = 'make'
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
@@ -12,6 +16,9 @@ repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
 
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
