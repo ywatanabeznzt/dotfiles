@@ -10,10 +10,8 @@ set guioptions -=L	"左スクロールバー非表示（分割時）
 set guioptions -=e	"GUIタブページを使用しない
 
 set cmdheight=1 "メッセージ表示欄を1行に
-if has('kaoriya')
-    set background=dark
-endif
-colorscheme solarized
+colorscheme onedark
+
 if has('mac')
     set guifont=Myrica\ M:h14
 else
