@@ -8,6 +8,6 @@ let g:vimshell_prompt_pattern = '^\f\+ >'
 if has('win32') || has('win64')
     let g:vimshell_interactive_encodings = {
         \ '/Program Files/Git/': 'utf-8'
-        \ };
+        \ }
 endif
 
