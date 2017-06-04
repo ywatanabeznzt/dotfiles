@@ -14,4 +14,8 @@ if has('kaoriya')
     set background=dark
 endif
 colorscheme solarized
-set guifont=Myrica\ M:h12
+if has('mac')
+    set guifont=Myrica\ M:h14
+else
+    set guifont=Myrica\ M:h12
+endif
