@@ -10,3 +10,4 @@ nnoremap <silent> [Unite]<C-r> :Unite file_mru buffer<CR>
 nnoremap <silent> [Unite]<C-g> :Unite vimgrep -no-quit<CR>
 nnoremap <silent> [Unite]<C-u> :UniteResume<CR>
 nnoremap <silent> [Unite]<C-b> :Unite bookmark<CR>
+nnoremap <silent> [Unite]<C-o> :Unite outline -no-quit<CR>

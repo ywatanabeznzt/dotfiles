@@ -15,6 +15,9 @@ repo = 'Shougo/neomru.vim'
 repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
+repo = 'Shougo/unite-outline'
+
+[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 
 [[plugins]]
