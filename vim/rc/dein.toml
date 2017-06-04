@@ -39,6 +39,9 @@ repo = 'yggdroot/indentLine'
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]
