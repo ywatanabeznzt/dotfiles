@@ -29,5 +29,6 @@ set backup                      "バックアップ機能を有効化
 set backupdir=~/.vim/tmp/backup "バックアップディレクトリを指定
 set undofile                    "Undoファイル機能を有効化
 set undodir=~/.vim/tmp/undo     "Undoディレクトリを指定
+set backspace=indent,eol,start
 
-colorscheme solarized
+colorscheme onedark

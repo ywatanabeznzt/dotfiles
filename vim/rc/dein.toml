@@ -36,6 +36,9 @@ repo = 'tpope/vim-fugitive'
 repo = 'yggdroot/indentLine'
 
 [[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]
