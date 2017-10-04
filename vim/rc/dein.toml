@@ -45,6 +45,9 @@ repo = 'tyru/open-browser.vim'
 repo = 'tyru/caw.vim'
 
 [[plugins]]
+repo = 'terryma/vim-expand-region'
+
+[[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]
