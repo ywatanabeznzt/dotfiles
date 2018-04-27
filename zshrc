@@ -7,6 +7,7 @@ zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 # zplug "dracula/zsh", as:theme
 
 if ! zplug check --verbose; then
