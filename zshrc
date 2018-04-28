@@ -58,6 +58,10 @@ export XDG_CONFIG_HOME=~/.dotfiles
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 # zsh-autosuggestionsの設定
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+# FZFデフォルトコマンド
+export FZF_DEFAULT_COMMAND='find ./ -type f'
+# FZFデフォルトオプション
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 #===========================================================
 # setopt
