@@ -9,6 +9,9 @@ ln -sfn $HOME/.dotfiles/zplug $HOME/.zplug
 git submodule init
 git submodule update
 
+git config --global alias.st "status"
+git config --global alias.logone "log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]'"
+
 echo [check] vim lua support: 
 if [ -n "`vim --version | grep -o +lua`" ]; then
     echo OK
