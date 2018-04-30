@@ -1,5 +1,5 @@
 #===========================================================
-# zplug
+# Zplug
 #===========================================================
 source ~/.zplug/init.zsh
 
@@ -8,6 +8,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:rg
 # zplug "dracula/zsh", as:theme
 
 if ! zplug check --verbose; then
@@ -21,26 +22,27 @@ zplug load #--verbose
 
 
 #===========================================================
-# autoload & zle
+# Autoload & ZLE
 #===========================================================
+autoload -Uz vcs_info
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
 #===========================================================
-# alias
+# Alias
 #===========================================================
 alias ll="ls -l"
 alias la="ls -al"
 
 #===========================================================
-# bindkey
+# Bindkey
 #===========================================================
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 #===========================================================
-# export
+# Export
 #===========================================================
 # ls時の色を設定
 export CLICOLOR=true
@@ -59,12 +61,12 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 # zsh-autosuggestionsの設定
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 # FZFデフォルトコマンド
-export FZF_DEFAULT_COMMAND='find ./ -type f'
+export FZF_DEFAULT_COMMAND='rg --files'
 # FZFデフォルトオプション
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
 #===========================================================
-# setopt
+# Setopt
 #===========================================================
 # 補完候補を一覧表示
 setopt auto_list
@@ -82,14 +84,14 @@ setopt hist_reduce_blanks
 setopt pushd_ignore_dups
 # Zsh間でコマンド履歴を共有
 setopt share_history
-
-
-PROMPT="%{${fg[blue]}%}%c%{${reset_color}%} "
-
-autoload -Uz vcs_info
-
+# $PROMPT変数内の変数を展開する
 setopt prompt_subst
-local ret_status="%(?:%{$fg[cyan]%}➜ :%{$fg[red]%}➜ )"
+
+#===========================================================
+# Prompt
+#===========================================================
+PROMPT="%F{102}%c %f"
+local ret_status="%(?:%F{102}❯❯❯%f :%F{001}❯❯❯%f )"
 
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}✔ "
@@ -97,5 +99,6 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}✗ "
 zstyle ':vcs_info:*' formats "%F{cyan}(%b)%c%u%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
-PROMPT=$PROMPT'${vcs_info_msg_0_}'$ret_status
+PROMPT=$PROMPT$ret_status
+RPROMPT='${vcs_info_msg_0_}'
 
