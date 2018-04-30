@@ -9,7 +9,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:rg
-# zplug "dracula/zsh", as:theme
+zplug "b4b4r07/enhancd", use:init.sh
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]:"
@@ -102,3 +102,8 @@ precmd () { vcs_info }
 PROMPT=$PROMPT$ret_status
 RPROMPT='${vcs_info_msg_0_}'
 
+#===========================================================
+# Functions
+#===========================================================
+function fvim() { vim $(rg ${1} --files | fzf) }
+function fopen() { open $(find ${1:-`pwd`} | fzf) }
