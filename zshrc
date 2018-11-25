@@ -34,6 +34,10 @@ zle -N history-beginning-search-forward-end history-search-end
 #===========================================================
 alias ll="ls -l"
 alias la="ls -al"
+alias groot="cd-gitroot"
+alias zshrc="vim ~/.zshrc"
+alias dot="cd ~/.dotfiles"
+alias doc="docker-compose"
 
 #===========================================================
 # Bindkey
@@ -64,6 +68,8 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 export FZF_DEFAULT_COMMAND='rg --files'
 # FZFデフォルトオプション
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
+# goコマンドが存在する場合はGOPATHを設定
+type go > /dev/null 2>&1 && export GOPATH=$HOME/go
 
 #===========================================================
 # Setopt
@@ -107,3 +113,4 @@ RPROMPT='${vcs_info_msg_0_}'
 #===========================================================
 function fvim() { vim $(rg ${1} --files | fzf) }
 function fopen() { open $(find ${1:-`pwd`} | fzf) }
+
