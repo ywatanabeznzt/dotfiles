@@ -38,6 +38,7 @@ alias groot="cd-gitroot"
 alias zshrc="vim ~/.zshrc"
 alias dot="cd ~/.dotfiles"
 alias doc="docker-compose"
+alias exp="cd ~/devspace/exp"
 
 #===========================================================
 # Bindkey
