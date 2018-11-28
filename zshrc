@@ -40,6 +40,8 @@ alias dot="cd ~/.dotfiles"
 alias doc="docker-compose"
 alias dev="cd ~/devspace"
 alias exp="cd ~/devspace/exp"
+alias g='cd $(ghq root)/$(ghq list | fzf)'
+alias gb='open https://$(ghq list | fzf)'
 
 #===========================================================
 # Bindkey
