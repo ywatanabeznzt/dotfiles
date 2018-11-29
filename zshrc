@@ -42,6 +42,8 @@ alias dev="cd ~/devspace"
 alias exp="cd ~/devspace/exp"
 alias g='cd $(ghq root)/$(ghq list | fzf)'
 alias gb='open https://$(ghq list | fzf)'
+alias c='cd $PWD/$(find . -mindepth 1 -maxdepth 1 -type d | grep -v "\/\." | fzf)'
+alias v='vim $PWD/$(find . -mindepth 1 -maxdepth 1 -type f | fzf)'
 
 #===========================================================
 # Bindkey
