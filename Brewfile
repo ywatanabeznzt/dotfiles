@@ -1,0 +1,7 @@
+brew "git"
+brew "tree"
+brew "jq"
+brew "zsh"
+brew "wget"
+brew "goenv"
+brew "npm"
