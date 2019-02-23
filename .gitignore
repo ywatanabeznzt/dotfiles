@@ -4,4 +4,6 @@ vim/dein/*
 vim/tmp/backup/*
 vim/tmp/undo/*
 
+anyenv/
+
 !.gitkeep
