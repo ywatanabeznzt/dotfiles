@@ -76,6 +76,7 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 export PATH=/usr/local/bin:$PATH
 eval "$(anyenv init -)"
+export PATH=$(go env GOPATH)/bin:$PATH
 
 #===========================================================
 # Setopt
