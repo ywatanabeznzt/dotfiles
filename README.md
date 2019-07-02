@@ -3,15 +3,14 @@ Dot Files
 
 ## Installation
 ``` sh
-# for Mac or Linux
-git clone https://github.com/ywatanabeznzt/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-sh setup.sh
+git clone https://github.com/ywatanabeznzt/dotfiles.git $HOME/.dotfiles
+cd $HOME/.dotfiles
+sh clenv.sh install
 ```
 
-``` bat
-rem for Windows
-git clone https://github.com/ywatanabeznzt/dotfiles.git %HOMEPATH%\.dotfiles
-cd %HOMEPATH%\.dotfiles
-setup.dat
+## UnInstallation
+
+``` sh
+cd ~/.dotfiles
+sh clenv.sh uninstall
 ```
