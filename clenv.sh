@@ -23,8 +23,10 @@ function install() {
   setup_symbolic_links create
   brew bundle
   git submodule update --init
-  git config --global alias.st "status"
+  git config --global alias.st "status -uall"
   git config --global alias.logone "log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]'"
+  git config --global alias.br "branch"
+  git config --global alias.co "checkout"
   anyenv install --force-init
   anyenv install goenv
   anyenv install nodenv
@@ -40,6 +42,8 @@ function uninstall() {
   rm -rf $(dirname $0)/anyenv
   git config --global --unset alias.st
   git config --global --unset alias.logone
+  git config --global --unset alias.br
+  git config --global --unset alias.co
   git submodule deinit --force --all
   brew bundle list | xargs -I @ brew uninstall @
   setup_symbolic_links delete
