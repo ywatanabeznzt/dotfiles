@@ -12,7 +12,7 @@ set showcmd                     "コマンドを画面最下部に表示する
 set incsearch                   "インクリメンタルサーチ
 set hlsearch                    "検索時に検索結果をハイライト
 set cursorline                  "カーソル行をハイライト
-set wrap                        "文を折り返して表示する
+set nowrap                      "文を折り返して表示しない
 set helpheight=999              "ヘルプ画面いっぱいに開く
 set helplang=ja                 "ヘルプを日本語に
 set splitright                  "垂直分割の時は右に作成
