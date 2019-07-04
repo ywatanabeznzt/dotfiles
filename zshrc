@@ -36,7 +36,7 @@ alias ll="ls -l"
 alias la="ls -al"
 alias groot="cd-gitroot"
 alias zshrc="vim ~/.zshrc"
-alias dot="cd ~/.dotfiles"
+alias dots="cd ~/.dotfiles"
 alias doc="docker-compose"
 alias dev="cd ~/devspace"
 alias exp="cd ~/devspace/exp"
@@ -120,4 +120,9 @@ RPROMPT='${vcs_info_msg_0_}'
 #===========================================================
 function fvim() { vim $(rg ${1} --files | fzf) }
 function fopen() { open $(find ${1:-`pwd`} | fzf) }
+
+#===========================================================
+# Load Local Run Commands
+#===========================================================
+for rc in $(find $HOME/.dotfiles/localrc/ -type f -name "*.*sh"); do; eval "source $rc"; done
 
