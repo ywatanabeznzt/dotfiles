@@ -20,7 +20,6 @@ fi
 
 zplug load #--verbose
 
-
 #===========================================================
 # Autoload & ZLE
 #===========================================================
@@ -34,15 +33,13 @@ zle -N history-beginning-search-forward-end history-search-end
 #===========================================================
 alias ll="ls -l"
 alias la="ls -al"
+alias cat="bat"
 alias groot="cd-gitroot"
 alias zshrc="vim ~/.zshrc"
 alias dots="cd ~/.dotfiles"
 alias doc="docker-compose"
 alias dev="cd ~/devspace"
 alias exp="cd ~/devspace/exp"
-alias g='cd $(ghq root)/$(ghq list | fzf)'
-alias gb='open https://$(ghq list | fzf)'
-alias c='cd $PWD/$(find . -mindepth 1 -maxdepth 1 -type d | grep -v "\/\." | fzf)'
 alias v='vim $PWD/$(find . -mindepth 1 -maxdepth 1 -type f | fzf)'
 
 #===========================================================
@@ -118,6 +115,28 @@ RPROMPT='${vcs_info_msg_0_}'
 #===========================================================
 # Functions
 #===========================================================
+function reload() { source $HOME/.zshrc }
+function g() {
+    local item=$(ghq list | fzf --prompt='Open Repository> ')
+    [ $item ] && cd $(ghq root)/$item || :
+}
+function gb() {
+    local item=$(ghq list | fzf --prompt='Browse Repository> ')
+    [ $item ] && open $(ghq root)/$item || :
+}
+function c() {
+    local item=$(echo "$(echo ..; find ./ -mindepth 1 -maxdepth 1 -type d)" | awk -F/ '{print $NF}' | sort | fzf --prompt='Open Directory> ')
+    [ $item ] && cd $item/ && c || :
+}
+# TODO: Include構文対応
+function ssh() {
+    if [ $# -ne 0 ]; then
+        $(whereis ssh) $@
+        return $?
+    fi
+    local item=$(cat $HOME/.ssh/config | grep '^Host' | awk '{print $NF}' | fzf --prompt='SSH> ')
+    [ $item ] && $(whereis ssh) $item
+}
 function fvim() { vim $(rg ${1} --files | fzf) }
 function fopen() { open $(find ${1:-`pwd`} | fzf) }
 
