@@ -122,7 +122,7 @@ function g() {
 }
 function gb() {
     local item=$(ghq list | fzf --prompt='Browse Repository> ')
-    [ $item ] && open $(ghq root)/$item || :
+    [ $item ] && open https://$item || :
 }
 function c() {
     local item=$(echo "$(echo ..; find ./ -mindepth 1 -maxdepth 1 -type d)" | awk -F/ '{print $NF}' | sort | fzf --prompt='Open Directory> ')
