@@ -128,6 +128,19 @@ function c() {
     local item=$(echo "$(echo ..; find ./ -mindepth 1 -maxdepth 1 -type d)" | awk -F/ '{print $NF}' | sort | fzf --prompt='Open Directory> ')
     [ $item ] && cd $item/ && c || :
 }
+function nr() {
+    if [ ! -f package.json ]; then
+        echo 'package.json not found.'
+        return 1
+    fi
+    local list=$(cat package.json | jq --raw-output '.scripts | if type == "object" then . | keys | join("\n") else "" end')
+    if [ ! $list ]; then
+        echo 'no scripts.'
+        return 1
+    fi
+    local item=$(echo $list | fzf)
+    [ $item ] && npm run $item || :
+}
 # TODO: Include構文対応
 function ssh() {
     if [ $# -ne 0 ]; then
