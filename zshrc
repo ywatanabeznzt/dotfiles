@@ -124,6 +124,15 @@ function gb() {
     local item=$(ghq list | fzf --prompt='Browse Repository> ')
     [ $item ] && open https://$item || :
 }
+function gc() {
+    local list=$(git branch --all --color 2>/dev/null | grep -v 'HEAD')
+    if [ ! $list ]; then
+        echo 'no branch.'
+        return 1
+    fi
+    local item=$(echo $list | fzf --ansi)
+    [ $item ] && git checkout $(echo $item | awk '{print $NF}' | sed 's/^remotes\///') || :
+}
 function c() {
     local item=$(echo "$(echo ..; find ./ -mindepth 1 -maxdepth 1 -type d)" | awk -F/ '{print $NF}' | sort | fzf --prompt='Open Directory> ')
     [ $item ] && cd $item/ && c || :
