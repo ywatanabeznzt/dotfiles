@@ -133,6 +133,15 @@ function gc() {
     local item=$(echo $list | fzf --ansi)
     [ $item ] && git checkout $(echo $item | awk '{print $NF}' | sed 's/^remotes\///') || :
 }
+function gl() {
+    local list=$(git log --color --pretty='format:%C(yellow)%h %C(reset)%s %C(cyan)[%an]' 2>/dev/null)
+    if [ ! $list ]; then
+        echo 'no log.'
+        return 1
+    fi
+    local item=$(echo $list | fzf --ansi --height 100% --preview 'git show --color $(echo {} | awk "{print \$1}")' --bind 'ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up')
+    if [ $item ] && git show --color $(echo $item | awk '{print $1}') | cat || :
+}
 function gsa() {
     local list=$(git stash list 2>/dev/null)
     if [ ! $list ]; then
