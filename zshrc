@@ -168,6 +168,10 @@ function ssh() {
     local item=$(cat $HOME/.ssh/config | grep '^Host' | awk '{print $NF}' | fzf --prompt='SSH> ')
     [ $item ] && $(whereis ssh) $item
 }
+function hist() {
+    local item=$(history 0 | sort -nr | awk '{$1=""; print $0}' | sed 's/^ //' | fzf)
+    [ $item ] && eval $item || :
+}
 function fvim() { vim $(rg ${1} --files | fzf) }
 function fopen() { open $(find ${1:-`pwd`} | fzf) }
 
