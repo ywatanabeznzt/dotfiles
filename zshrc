@@ -12,10 +12,10 @@ zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:rg
 zplug "b4b4r07/enhancd", use:init.sh
 
 if ! zplug check --verbose; then
-    printf "Install? [y/N]:"
-    if read -q ; then
-        echo; zplug install
-    fi
+  printf "Install? [y/N]:"
+  if read -q ; then
+    echo; zplug install
+  fi
 fi
 
 zplug load #--verbose
@@ -101,7 +101,7 @@ setopt prompt_subst
 # Prompt
 #===========================================================
 PROMPT="%F{102}%c %f"
-local ret_status="%(?:%F{102}❯❯❯%f :%F{001}❯❯❯%f )"
+ret_status="%(?:%F{102}❯❯❯%f :%F{001}❯❯❯%f )"
 
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}✔ "
@@ -109,7 +109,7 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}✗ "
 zstyle ':vcs_info:*' formats "%F{cyan}(%b)%c%u%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
-PROMPT=$PROMPT$ret_status
+PROMPT=${PROMPT}${ret_status}
 RPROMPT='${vcs_info_msg_0_}'
 
 #===========================================================
@@ -117,69 +117,69 @@ RPROMPT='${vcs_info_msg_0_}'
 #===========================================================
 function reload() { source $HOME/.zshrc }
 function g() {
-    local item=$(ghq list | fzf --prompt='Open Repository> ')
-    [ $item ] && cd $(ghq root)/$item || :
+  local item=$(ghq list | fzf --prompt='Open Repository> ')
+  [[ ${item} ]] && cd $(ghq root)/${item} || :
 }
 function gb() {
-    local item=$(ghq list | fzf --prompt='Browse Repository> ')
-    [ $item ] && open https://$item || :
+  local item=$(ghq list | fzf --prompt='Browse Repository> ')
+  [[ ${item} ]] && open https://${item} || :
 }
 function gc() {
-    local list=$(git branch --all --color 2>/dev/null | grep -v 'HEAD')
-    if [ ! $list ]; then
-        echo 'no branch.'
-        return 1
-    fi
-    local item=$(echo $list | fzf --ansi)
-    [ $item ] && git checkout $(echo $item | awk '{print $NF}' | sed 's/^remotes\///') || :
+  local list=$(git branch --all --color 2>/dev/null | grep -v 'HEAD')
+  if [[ ! ${list} ]]; then
+    echo 'no branch.'
+    return 1
+  fi
+  local item=$(echo ${list} | fzf --ansi)
+  [[ ${item} ]] && git checkout $(echo ${item} | awk '{print $NF}' | sed 's/^remotes\///') || :
 }
 function gl() {
-    local list=$(git log --color --pretty='format:%C(yellow)%h %C(reset)%s %C(cyan)[%an]' 2>/dev/null)
-    if [ ! $list ]; then
-        echo 'no log.'
-        return 1
-    fi
-    local item=$(echo $list | fzf --ansi --height 100% --preview 'git show --color $(echo {} | awk "{print \$1}")' --bind 'ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up')
-    if [ $item ] && git show --color $(echo $item | awk '{print $1}') | cat || :
+  local list=$(git log --color --pretty='format:%C(yellow)%h %C(reset)%s %C(cyan)[%an]' 2>/dev/null)
+  if [[ ! ${list} ]]; then
+    echo 'no log.'
+    return 1
+  fi
+  local item=$(echo $list | fzf --ansi --height 100% --preview 'git show --color $(echo {} | awk "{print \$1}")' --bind 'ctrl-j:preview-down,ctrl-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up')
+  [[ ${item} ]] && git show --color $(echo ${item} | awk '{print $1}') | cat || :
 }
 function gsa() {
-    local list=$(git stash list 2>/dev/null)
-    if [ ! $list ]; then
-        echo 'no stash.'
-        return 1
-    fi
-    local item=$(echo $list | fzf)
-    [ $item ] && git stash apply $(echo $item | awk -F: '{print $1}') || :
+  local list=$(git stash list 2>/dev/null)
+  if [[ ! ${list} ]]; then
+    echo 'no stash.'
+    return 1
+  fi
+  local item=$(echo $list | fzf)
+  [[ ${item} ]] && git stash apply $(echo ${item} | awk -F: '{print $1}') || :
 }
 function c() {
-    local item=$(echo "$(echo ..; find ./ -mindepth 1 -maxdepth 1 -type d)" | awk -F/ '{print $NF}' | sort | fzf --prompt='Open Directory> ')
-    [ $item ] && cd $item/ && c || :
+  local item=$(echo "$(echo ..; find ./ -mindepth 1 -maxdepth 1 -type d)" | awk -F/ '{print $NF}' | sort | fzf --prompt='Open Directory> ')
+  [[ ${item} ]] && cd ${item}/ && c || :
 }
 function nr() {
-    if [ ! -f package.json ]; then
-        echo 'package.json not found.'
-        return 1
-    fi
-    local list=$(cat package.json | jq --raw-output '.scripts | if type == "object" then . | keys | join("\n") else "" end')
-    if [ ! $list ]; then
-        echo 'no scripts.'
-        return 1
-    fi
-    local item=$(echo $list | fzf)
-    [ $item ] && npm run $item || :
+  if [[ ! -f package.json ]]; then
+    echo 'package.json not found.'
+    return 1
+  fi
+  local list=$(cat package.json | jq --raw-output '.scripts | if type == "object" then . | keys | join("\n") else "" end')
+  if [[ ! ${list} ]]; then
+    echo 'no scripts.'
+    return 1
+  fi
+  local item=$(echo $list | fzf)
+  [[ ${item} ]] && npm run ${item} || :
 }
 # TODO: Include構文対応
 function ssh() {
-    if [ $# -ne 0 ]; then
-        $(whereis ssh) $@
-        return $?
-    fi
-    local item=$(cat $HOME/.ssh/config | grep '^Host' | awk '{print $NF}' | fzf --prompt='SSH> ')
-    [ $item ] && $(whereis ssh) $item
+  if [[ $# -ne 0 ]]; then
+    $(whereis ssh) $@
+    return $?
+  fi
+  local item=$(cat $HOME/.ssh/config | grep '^Host' | awk '{print $NF}' | fzf --prompt='SSH> ')
+  [[ ${item} ]] && $(whereis ssh) ${item}
 }
 function hist() {
-    local item=$(history 0 | sort -nr | awk '{$1=""; print $0}' | sed 's/^ //' | fzf)
-    [ $item ] && eval $item || :
+  local item=$(history 0 | sort -nr | awk '{$1=""; print $0}' | sed 's/^ //' | fzf)
+  [[ ${item} ]] && eval ${item} || :
 }
 function fvim() { vim $(rg ${1} --files | fzf) }
 function fopen() { open $(find ${1:-`pwd`} | fzf) }
@@ -187,5 +187,4 @@ function fopen() { open $(find ${1:-`pwd`} | fzf) }
 #===========================================================
 # Load Local Run Commands
 #===========================================================
-for rc in $(find $HOME/.dotfiles/localrc/ -type f -name "*.*sh"); do; eval "source $rc"; done
-
+for rc in $(find $HOME/.dotfiles/localrc/ -type f -name "*.*sh"); do eval "source ${rc}"; done
