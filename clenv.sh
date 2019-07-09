@@ -28,6 +28,7 @@ function install() {
   git config --global alias.br "branch"
   git config --global alias.co "checkout"
   anyenv install --force-init
+  eval "$(anyenv init -)"
   anyenv install goenv
   anyenv install nodenv
   eval "$(anyenv init -)"
