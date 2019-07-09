@@ -33,6 +33,7 @@ filetype plugin indent on
 call s:source_rc('encodings.rc.vim')
 call s:source_rc('options.rc.vim')
 call s:source_rc('mappings.rc.vim')
+call s:source_rc('filetypes.rc.vim')
 
 if has('win32') || has('win64')
     call s:source_rc('windows.rc.vim')
