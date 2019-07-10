@@ -38,7 +38,6 @@ alias groot="cd-gitroot"
 alias zshrc="vim ${HOME}/.zshrc"
 alias dots="cd ${HOME}/.dotfiles"
 alias doc="docker-compose"
-alias v='vim $PWD/$(find . -mindepth 1 -maxdepth 1 -type f | fzf)'
 
 #==================================================================================================
 # Bindkey
@@ -199,8 +198,17 @@ function hist() {
     sed 's/^ //' | fzf --prompt="${FZF_PROMPT}")
   [[ ${item} ]] && eval ${item} || :
 }
-function fvim() { vim $(rg ${1} --files | fzf) }
-function fopen() { open $(find ${1:-`pwd`} | fzf) }
+function v() {
+  local -r FZF_PROMPT='Vim Edit> '
+  local item=$(find ./ -mindepth 1 -maxdepth 1 -type f | awk -F/ '{print $NF}' | \
+    sort | fzf --prompt="${FZF_PROMPT}")
+  [[ ${item} ]] && vim ${item} || :
+}
+function vv() {
+  local -r FZF_PROMPT='Vim Edit> '
+  local item=$(rg ./ --files | sed 's/^\.\///' | fzf --prompt="${FZF_PROMPT}")
+  [[ ${item} ]] && vim ${item} || :
+}
 
 #==================================================================================================
 # Load Local Run Commands
