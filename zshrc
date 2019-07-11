@@ -128,7 +128,7 @@ function gb() {
 }
 function gc() {
   local -r FZF_PROMPT='Checkout Branch> '
-  local list=$(git branch --all --color 2>/dev/null | grep -v 'HEAD')
+  local list=$(git branch --all --color 2>/dev/null | rg -v 'HEAD')
   if [[ ! ${list} ]]; then
     echo 'no branch.'
     return 1
@@ -188,7 +188,7 @@ function ssh() {
     $(whereis ssh) $@
     return $?
   fi
-  local item=$(cat $HOME/.ssh/config | grep '^Host' | \
+  local item=$(cat $HOME/.ssh/config | rg '^Host' | \
     awk '{print $NF}' | fzf --prompt="${FZF_PROMPT}")
   [[ ${item} ]] && $(whereis ssh) ${item}
 }
