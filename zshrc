@@ -213,4 +213,7 @@ function vv() {
 #==================================================================================================
 # Load Local Run Commands
 #==================================================================================================
-for rc in $(find $HOME/.dotfiles/localrc/ -type f -name "*.*sh"); do eval "source ${rc}"; done
+for rc in $(rg $HOME/.dotfiles/localrc/ --files --no-ignore-vcs); do
+  eval "source ${rc}"
+done
+
