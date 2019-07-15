@@ -118,13 +118,12 @@ RPROMPT='${vcs_info_msg_0_}'
 function reload() { source $HOME/.zshrc }
 function g() {
   local -r FZF_PROMPT='Open Repository> '
-  local item=$(ghq list | fzf --prompt="${FZF_PROMPT}")
+  local -r FZF_HEADER='<Ctrl-B>: Browse Repository'
+  local -r PREVIEW='bat --color=always --number $(ghq root)/{}/README.md'
+  local item=$(ghq list | fzf --prompt="${FZF_PROMPT}" --header "${FZF_HEADER}" \
+    --preview "${PREVIEW}" \
+    --bind 'ctrl-b:execute(open https://{})+accept')
   [[ ${item} ]] && cd $(ghq root)/${item} || :
-}
-function gb() {
-  local -r FZF_PROMPT='Browse Repository> '
-  local item=$(ghq list | fzf --prompt="${FZF_PROMPT}")
-  [[ ${item} ]] && open https://${item} || :
 }
 function gc() {
   local -r FZF_PROMPT='Checkout Branch> '
