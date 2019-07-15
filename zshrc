@@ -199,7 +199,7 @@ function hist() {
 }
 function v() {
   local -r FZF_PROMPT='Vim Edit> '
-  local item=$(find ./ -mindepth 1 -maxdepth 1 -type f | awk -F/ '{print $NF}' | \
+  local item=$(rg ./ --files --maxdepth 1 | awk -F/ '{print $NF}' | \
     sort | fzf --prompt="${FZF_PROMPT}")
   [[ ${item} ]] && vim ${item} || :
 }
