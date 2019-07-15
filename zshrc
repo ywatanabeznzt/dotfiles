@@ -71,6 +71,8 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 # FZFカスタムオプション
 export X_FZF_BIND_SCROLL='ctrl-j:preview-down,ctrl-k:preview-up'
 export X_FZF_BIND_SCROLL_PAGE='ctrl-f:preview-page-down,ctrl-b:preview-page-up'
+export X_FZF_BIND="${X_FZF_BIND_SCROLL},${X_FZF_BIND_SCROLL_PAGE}"
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind '${X_FZF_BIND}'"
 export PATH=/usr/local/bin:$PATH
 eval "$(anyenv init -)"
 export PATH=$(go env GOPATH)/bin:$PATH
@@ -127,26 +129,26 @@ function g() {
 }
 function gc() {
   local -r FZF_PROMPT='Checkout Branch> '
+  local -r PREVIEW='git log --stat --color $(echo {} | awk "{print \$NF}")'
   local list=$(git branch --all --color 2>/dev/null | rg -v 'HEAD')
   if [[ ! ${list} ]]; then
     echo 'no branch.'
     return 1
   fi
-  local item=$(echo ${list} | fzf --ansi --prompt="${FZF_PROMPT}")
-  [[ ${item} ]] && git checkout $(echo ${item} | awk '{print $NF}' | sed 's/^remotes\///') || :
+  local item=$(echo ${list} | fzf --ansi --prompt="${FZF_PROMPT}" --preview="${PREVIEW}")
+  [[ ${item} ]] && git checkout $(echo ${item} | awk '{print $NF}') || :
 }
 function gl() {
   local -r FZF_PROMPT='Show Commit> '
   local -r FORMAT='format:%C(yellow)%h %C(reset)%s %C(cyan)[%an]'
   local -r PREVIEW='git show --color $(echo {} | awk "{print \$1}")'
-  local -r BIND="${X_FZF_BIND_SCROLL},${X_FZF_BIND_SCROLL_PAGE}"
   local list=$(git log --pretty="${FORMAT}" --color 2>/dev/null)
   if [[ ! ${list} ]]; then
     echo 'no log.'
     return 1
   fi
   local item=$(echo $list | fzf --ansi --height 100% \
-    --preview "${PREVIEW}" --bind "${BIND}" --prompt="${FZF_PROMPT}")
+    --preview "${PREVIEW}" --prompt="${FZF_PROMPT}")
   [[ ${item} ]] && git show --color $(echo ${item} | awk '{print $1}') | cat || :
 }
 function gsa() {
