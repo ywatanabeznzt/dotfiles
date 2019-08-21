@@ -39,6 +39,7 @@ alias zshrc="vim ${HOME}/.zshrc"
 alias dots="cd ${HOME}/.dotfiles"
 alias doc="docker-compose"
 
+alias list="fzf_common_list"
 alias g="fzf_git_open"
 alias gc="fzf_git_checkout"
 alias gl="fzf_git_log"

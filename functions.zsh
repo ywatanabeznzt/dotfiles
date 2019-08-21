@@ -2,6 +2,13 @@
 
 function reload() { source $HOME/.zshrc }
 
+function fzf_common_list() {
+  local -r FZF_PROMPT='Run FZF Command> '
+  local list=$(alias | grep "=fzf_" | grep -v "${funcstack[1]}" | awk -F"=" "{print sprintf(\"(%5s): %s\", \$1, \$2)}")
+  local item=$(echo $list | fzf --prompt "${FZF_PROMPT}")
+  [[ ${item} ]] && $(echo $item | awk '{print $NF}') || :
+}
+
 function fzf_git_open() {
   local -r FZF_PROMPT='Open Repository> '
   local -r FZF_HEADER='<Ctrl-B>: Browse Repository'
