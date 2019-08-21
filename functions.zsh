@@ -100,14 +100,17 @@ function fzf_common_history() {
 
 function fzf_common_vim_edit_current_dir() {
   local -r FZF_PROMPT='Vim Edit> '
+  local -r PREVIEW='bat --color always --number {}'
   local item=$(rg ./ --files --maxdepth 1 | awk -F/ '{print $NF}' | \
-    sort | fzf --prompt="${FZF_PROMPT}")
+    sort | fzf --prompt="${FZF_PROMPT}" --preview "${PREVIEW}" --height 100%)
   [[ ${item} ]] && vim ${item} || :
 }
 
 function fzf_common_vim_edit_recursive_dir() {
   local -r FZF_PROMPT='Vim Edit> '
-  local item=$(rg ./ --files | sed 's/^\.\///' | fzf --prompt="${FZF_PROMPT}")
+  local -r PREVIEW='bat --color always --number {}'
+  local item=$(rg ./ --files | sed 's/^\.\///' | fzf --prompt="${FZF_PROMPT}" \
+    --preview "${PREVIEW}" --height 100%)
   [[ ${item} ]] && vim ${item} || :
 }
 
