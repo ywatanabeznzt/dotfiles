@@ -1,7 +1,8 @@
 #===================================================================================================
 # Zplug
 #===================================================================================================
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
@@ -38,6 +39,8 @@ alias groot="cd-gitroot"
 alias zshrc="vim ${HOME}/.zshrc"
 alias dots="cd ${HOME}/.dotfiles"
 alias doc="docker-compose"
+alias vim="nvim"
+alias gs="git status"
 
 alias list="fzf_common_list"
 alias g="fzf_git_open"
@@ -70,9 +73,9 @@ export HISTSIZE=1000
 export SAVEHIST=1000000
 # 文字コードにUTF-8を指定
 export LANG=ja_JP.UTF-8
-# NeoVim用
-export XDG_CONFIG_HOME=~/.dotfiles
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+# XDG Base Directory用の設定
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
 # zsh-autosuggestionsの設定
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 # FZFデフォルトコマンド

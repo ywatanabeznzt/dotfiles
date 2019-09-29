@@ -1,11 +1,3 @@
-vim/bundle/*
-vim/.netrwhist
-vim/dein/*
-vim/tmp/backup/*
-vim/tmp/undo/*
-
 localrc/*
-anyenv/
-.idea/
-
 !.gitkeep
+

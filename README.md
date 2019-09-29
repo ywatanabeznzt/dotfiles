@@ -8,9 +8,16 @@ cd $HOME/.dotfiles
 sh clenv.sh install
 ```
 
+## CheckStatus
+``` sh
+cd $HOME/.dotfiles
+sh clenv.sh status
+```
+
 ## UnInstallation
 
 ``` sh
-cd ~/.dotfiles
+cd $HOME/.dotfiles
 sh clenv.sh uninstall
 ```
+

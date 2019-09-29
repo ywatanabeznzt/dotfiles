@@ -21,4 +21,11 @@ nnoremap <S-h> 10<C-w>>
 nnoremap <S-l> 10<C-w><
 nnoremap <S-k> 10<C-w>+
 nnoremap <S-j> 10<C-w>-
+" Terminalの設定
+tnoremap <silent> <ESC> <C-\><C-n>
+
+nnoremap [CORE] <Nop>
+nmap <CR> [CORE]
+
+nnoremap <silent> [CORE]t :vne<CR>:terminal<CR>:startinsert<CR>
 
