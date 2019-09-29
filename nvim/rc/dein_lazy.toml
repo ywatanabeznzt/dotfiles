@@ -1,0 +1,10 @@
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_post_update = '''
+    execute :GoInstallBinaries
+'''

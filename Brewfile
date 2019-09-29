@@ -6,3 +6,6 @@ brew "wget"
 brew "anyenv"
 brew "ghq"
 brew "bat"
+brew "neovim"
+brew "zplug"
+

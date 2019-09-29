@@ -1,12 +1,11 @@
 [[plugins]]
-repo = 'Shougo/vimproc'
-build = 'make'
-
-[[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+    source $XDG_CONFIG_HOME/nvim/rc/plugins/denite.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -18,16 +17,22 @@ repo = 'Shougo/neoyank.vim'
 repo = 'Shougo/unite-outline'
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+    source $XDG_CONFIG_HOME/nvim/rc/plugins/deoplete.vim
+'''
 
 [[plugins]]
-repo = 'Shougo/vimshell.vim'
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+    source $XDG_CONFIG_HOME/nvim/rc/plugins/defx.vim
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+    source $XDG_CONFIG_HOME/nvim/rc/plugins/lightline.rc.vim
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -37,9 +42,6 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
-
-[[plugins]]
-repo = 'tyru/caw.vim'
 
 [[plugins]]
 repo = 'terryma/vim-expand-region'
@@ -53,5 +55,3 @@ repo = 'altercation/vim-colors-solarized'
 [[plugins]]
 repo = 'joshdick/onedark.vim'
 
-[[plugins]]
-repo = 'vim-jp/vimdoc-ja'
