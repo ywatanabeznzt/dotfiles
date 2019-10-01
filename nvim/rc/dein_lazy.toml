@@ -6,5 +6,5 @@ on_ft = 'toml'
 repo = 'fatih/vim-go'
 on_ft = 'go'
 hook_post_update = '''
-    execute :GoInstallBinaries
+    execute ':GoInstallBinaries'
 '''
