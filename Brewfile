@@ -8,4 +8,6 @@ brew "ghq"
 brew "bat"
 brew "neovim"
 brew "zplug"
+brew "ripgrep"
+brew "fzf"
 

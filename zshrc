@@ -8,8 +8,6 @@ zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
-zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:rg
 zplug "b4b4r07/enhancd", use:init.sh
 
 if ! zplug check --verbose; then
@@ -83,6 +81,7 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # FZFデフォルトオプション
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 # FZFカスタムオプション
+export X_FZF_HOME=$(brew --prefix fzf)
 export X_FZF_BIND_SCROLL='ctrl-j:preview-down,ctrl-k:preview-up'
 export X_FZF_BIND_SCROLL_PAGE='ctrl-f:preview-page-down,ctrl-b:preview-page-up'
 export X_FZF_BIND="${X_FZF_BIND_SCROLL},${X_FZF_BIND_SCROLL_PAGE}"

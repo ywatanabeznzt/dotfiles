@@ -6,7 +6,7 @@ PYTHON2_VERSIONS=(2.7.16)
 PYTHON3_VERSIONS=(3.7.4)
 
 function usage() {
-  echo "usage: $0 [install][uninstall]"
+  echo "usage: $0 [install][uninstall][check]"
 }
 
 function symbolic_link() {

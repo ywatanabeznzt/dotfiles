@@ -2,6 +2,12 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+    source $XDG_CONFIG_HOME/nvim/plugins/fzf.vim
+'''
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
     source $XDG_CONFIG_HOME/nvim/plugins/lightline.rc.vim
