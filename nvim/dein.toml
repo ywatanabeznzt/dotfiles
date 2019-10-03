@@ -4,7 +4,7 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-    source $XDG_CONFIG_HOME/nvim/rc/plugins/lightline.rc.vim
+    source $XDG_CONFIG_HOME/nvim/plugins/lightline.rc.vim
 '''
 
 [[plugins]]
@@ -33,6 +33,6 @@ repo = 'neoclide/coc.nvim'
 rev = 'release'
 merge = 0
 hook_add = '''
-    source $XDG_CONFIG_HOME/nvim/rc/plugins/coc.vim
+    source $XDG_CONFIG_HOME/nvim/plugins/coc.vim
 '''
 
