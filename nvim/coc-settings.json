@@ -1,0 +1,13 @@
+{
+  "coc.preferences.colorSupport": true,
+  "suggest.noselect": true,
+  "suggest.floatEnable": true,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
+}

@@ -8,3 +8,7 @@ on_ft = 'go'
 hook_post_update = '''
     execute ':GoInstallBinaries'
 '''
+hook_add = '''
+    let g:go_def_mapping_enabled = 0
+'''
+

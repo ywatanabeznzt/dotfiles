@@ -43,6 +43,7 @@ function install() {
   for v in ${PYTHON3_VERSIONS[@]}; do pyenv install $v; done; pyenv global $PYTHON3_VERSIONS
   $(pyenv root)/versions/$PYTHON2_VERSIONS/bin/pip install neovim
   $(pyenv root)/versions/$PYTHON3_VERSIONS/bin/pip3 install neovim
+  $(nodenv root)/versions/$NODE_VERSIONS/bin/npm install -g yarn neovim
   curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
   $SHELL /tmp/installer.sh $XDG_CACHE_HOME/dein
   mkdir -p $XDG_CACHE_HOME/nvim/{backup,undo}

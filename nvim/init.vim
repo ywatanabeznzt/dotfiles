@@ -4,6 +4,7 @@ endif
 
 let g:python3_host_prog = system('echo -n "$(pyenv root)/versions/$(pyenv versions --bare | grep "^3.")/bin/python"')
 let g:python_host_prog = system('echo -n "$(pyenv root)/versions/$(pyenv versions --bare | grep "^2.")/bin/python"')
+let g:node_host_prog = system('echo -n "$(nodenv root)/versions/$(nodenv versions --bare | tail -1)/bin/neovim-node-host"')
 set runtimepath+=$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
 
 function! s:resolve_path(path)
