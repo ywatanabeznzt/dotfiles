@@ -4,14 +4,16 @@
 let g:lightline = {
     \ 'colorscheme': 'onedark',
     \ 'active': {
-    \       'left': [ ['mode', 'paste'],['readonly','fugitive', 'gitgutter', 'filename', 'modified'] ],
+    \       'left': [ ['mode', 'paste'],['readonly','fugitive', 'gitgutter', 'filename', 'currentfunc', 'modified', 'diagnostics'] ],
     \       'right': [ ['percent', 'lineinfo'],['fileformat','fileencoding', 'filetype'],['charcode'] ]
     \ },
     \ 'component_function': {
     \       'mode': 'MyMode',
     \       'charcode': 'MyCharCode',
     \       'fugitive': 'MyFugitive',
-    \       'gitgutter': 'MyGitgutter'
+    \       'gitgutter': 'MyGitgutter',
+    \       'diagnostics': 'MyDiagnostic',
+    \       'currentfunc': 'MyCurrentFunc'
     \ },
     \ 'separator': {'left': "", 'right': ""},
     \ 'subseparator': {'left': "|", 'right': "|"},
@@ -88,3 +90,22 @@ function! MyGitgutter()
     endfor
     return join(ret, ' ')
 endfunction
+
+function! MyDiagnostic() abort
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    let msgs = []
+    if get(info, 'error', 0)
+        call add(msgs, 'ERROR(' . info['error'] . ')')
+    endif
+    if get(info, 'warning', 0)
+        call add(msgs, 'WARN(' . info['warning'] . ')')
+    endif
+    return join(msgs, ' ')
+endfunction
+
+function! MyCurrentFunc()
+    let func = get(b:, 'coc_current_function', '')
+    return empty(func) ? '' : func . '()'
+endfunction
+

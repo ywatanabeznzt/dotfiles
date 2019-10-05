@@ -1,5 +1,6 @@
 {
   "coc.preferences.colorSupport": true,
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "suggest.noselect": true,
   "suggest.floatEnable": true,
   "suggest.preferCompleteThanJumpPlaceholder": true,
