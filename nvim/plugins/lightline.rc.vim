@@ -8,7 +8,6 @@ let g:lightline = {
     \       'right': [ ['percent', 'lineinfo'],['fileformat','fileencoding', 'filetype'],['charcode'] ]
     \ },
     \ 'component_function': {
-    \       'mode': 'MyMode',
     \       'charcode': 'MyCharCode',
     \       'fugitive': 'MyFugitive',
     \       'gitgutter': 'MyGitgutter',
@@ -18,12 +17,6 @@ let g:lightline = {
     \ 'separator': {'left': "", 'right': ""},
     \ 'subseparator': {'left': "|", 'right': "|"},
     \ }
-
-function! MyMode()
-    return &ft == 'unite' ? 'Unite':
-        \ &ft == 'vimfiler' ? 'VimFiler':
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
 
 function! MyCharCode()
     if winwidth('.') <= 70
