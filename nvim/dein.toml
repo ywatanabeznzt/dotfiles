@@ -29,10 +29,13 @@ repo = 'terryma/vim-expand-region'
 repo = 'tomasr/molokai'
 
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
+repo = 'joshdick/onedark.vim'
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'lifepillar/vim-solarized8'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'

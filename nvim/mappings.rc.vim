@@ -17,10 +17,10 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 cnoremap <C-p> <up>
 cnoremap <C-n> <down>
 " ウィンドウのリサイズ
-nnoremap <S-h> 10<C-w>>
-nnoremap <S-l> 10<C-w><
-nnoremap <S-k> 10<C-w>+
-nnoremap <S-j> 10<C-w>-
+nnoremap <C-h> 10<C-w>>
+nnoremap <C-l> 10<C-w><
+nnoremap <C-k> 10<C-w>+
+nnoremap <C-j> 10<C-w>-
 " Terminalの設定
 tnoremap <silent> <ESC> <C-\><C-n>
 

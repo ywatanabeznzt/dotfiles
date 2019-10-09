@@ -34,5 +34,5 @@ set undofile                              "Undoファイル機能を有効化
 set undodir=$XDG_CACHE_HOME/nvim/undo     "Undoディレクトリを指定
 set backspace=indent,eol,start
 
-colorscheme onedark
+colorscheme gruvbox
 

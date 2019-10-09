@@ -4,6 +4,7 @@
   "suggest.noselect": true,
   "suggest.floatEnable": true,
   "suggest.preferCompleteThanJumpPlaceholder": true,
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
   "languageserver": {
     "golang": {
       "command": "gopls",
