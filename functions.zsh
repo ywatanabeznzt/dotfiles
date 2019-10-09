@@ -45,6 +45,19 @@ function fzf_git_log() {
   [[ ${item} ]] && git show --color $(echo ${item} | awk '{print $1}') | cat || :
 }
 
+function fzf_git_add() {
+  local -r FZF_PROMPT='Add File> '
+  local -r PREVIEW='git diff --color $(echo {} | awk "{print \$NF}")'
+  local list=$(git status --short 2>/dev/null)
+  if [[ ! ${list} ]]; then
+    echo 'no changed.'
+    return 1
+  fi
+  local item=$(echo $list | fzf --ansi --multi --height 100% \
+    --preview "${PREVIEW}" --prompt="${FZF_PROMPT}")
+      [[ ${item} ]] && git add $(echo ${item} | awk '{print $NF}') || :
+}
+
 function fzf_git_stash_apply() {
   local -r FZF_PROMPT='Apply Stash> ' 
   local list=$(git stash list 2>/dev/null)
