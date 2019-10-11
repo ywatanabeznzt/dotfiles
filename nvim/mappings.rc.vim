@@ -24,5 +24,5 @@ tnoremap <silent> <ESC> <C-\><C-n>
 nnoremap [CORE] <Nop>
 nmap <CR> [CORE]
 
-nnoremap <silent> [CORE]t :vne<CR>:terminal<CR>:startinsert<CR>
+nnoremap <silent> [CORE]t :tabnew<CR>:terminal<CR>:startinsert<CR>
 

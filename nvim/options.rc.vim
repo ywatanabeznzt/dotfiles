@@ -15,7 +15,6 @@ set termguicolors                         "TrueColorに設定
 set cursorline                            "カーソル行をハイライト
 set nowrap                                "文を折り返して表示しない
 set helpheight=999                        "ヘルプ画面いっぱいに開く
-set helplang=ja                           "ヘルプを日本語に
 set splitright                            "垂直分割の時は右に作成
 set splitbelow                            "水平分割の時は下に作成
 set laststatus=2                          "ステータスラインを２行に
