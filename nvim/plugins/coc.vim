@@ -10,7 +10,7 @@ set shortmess+=c
 inoremap <silent><expr> <C-n> coc#refresh()
 
 " Trigger showSignatureHelp
-inoremap <silent> <S-k> <C-o>:doautocmd User CocJumpPlaceholder<CR>
+inoremap <silent> <C-b> <C-o>:doautocmd User CocJumpPlaceholder<CR>
 
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)

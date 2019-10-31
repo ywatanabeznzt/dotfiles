@@ -20,6 +20,13 @@ nnoremap <C-k> 10<C-w>+
 nnoremap <C-j> 10<C-w>-
 " Terminalの設定
 tnoremap <silent> <ESC> <C-\><C-n>
+" 括弧の自動保管
+inoremap { {}<ESC>i
+inoremap {<Enter> {}<ESC>i<CR><ESC><S-o>
+inoremap {} {}
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<ESC>i<CR><ESC><S-o>
+inoremap () ()
 
 nnoremap [CORE] <Nop>
 nmap <CR> [CORE]
