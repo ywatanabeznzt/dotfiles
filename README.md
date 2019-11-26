@@ -32,7 +32,13 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 $SHELL /tmp/dein.sh $XDG_CACHE_HOME/dein
 
 # Restart Termianl
+exit
 
 # Install Anyenv Packages
+anyenv install goenv
+anyenv install nodenv
+anyenv install pyenv
+
+eval "$(anyenv init -)"
 ```
 
