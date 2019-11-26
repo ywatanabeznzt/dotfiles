@@ -89,7 +89,7 @@ export X_FZF_BIND="${X_FZF_BIND_SCROLL},${X_FZF_BIND_SCROLL_PAGE}"
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind '${X_FZF_BIND}'"
 export PATH=/usr/local/bin:$PATH
 eval "$(anyenv init -)"
-export PATH=$(go env GOPATH)/bin:$PATH
+type go > /dev/null && export PATH=$(go env GOPATH)/bin:$PATH
 
 #==================================================================================================
 # Setopt
