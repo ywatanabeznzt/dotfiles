@@ -40,5 +40,16 @@ anyenv install nodenv
 anyenv install pyenv
 
 eval "$(anyenv init -)"
+
+goenv install 1.13.4
+
+# For nvim
+nodenv install 12.13.1
+pyenv install 2.7.17
+pyenv install 3.7.5
+
+$(nodenv root)/versions/12.13.1/bin/npm install -g yarn neovim
+$(pyenv root)/versions/2.7.17/bin/pip install neovim
+$(pyenv root)/versions/3.7.5/bin/pip3 install neovim
 ```
 
