@@ -8,6 +8,8 @@ set shortmess+=c
 
 " Trigger completion
 inoremap <silent><expr> <C-n> coc#refresh()
+" Trigger showSignatureHelp
+inoremap <silent> <C-b> <C-o>:doautocmd User CocJumpPlaceholder<CR>
 
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
