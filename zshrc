@@ -88,6 +88,8 @@ export X_FZF_BIND_SCROLL_PAGE='ctrl-f:preview-page-down,ctrl-b:preview-page-up'
 export X_FZF_BIND="${X_FZF_BIND_SCROLL},${X_FZF_BIND_SCROLL_PAGE}"
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --bind '${X_FZF_BIND}'"
 export PATH=/usr/local/bin:$PATH
+# GHQディレクトリを設定
+export GHQ_ROOT=$HOME/.ghq
 eval "$(anyenv init -)"
 type go > /dev/null && export PATH=$(go env GOPATH)/bin:$PATH
 
